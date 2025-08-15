@@ -16,6 +16,11 @@ spec:
         app: k8s-addon
     spec:
       serviceAccountName: k8s-addon
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Equal
+          value: 'true'
+          effect: NoSchedule
       containers:
         - name: addon
           image: k8s-addon:dev
